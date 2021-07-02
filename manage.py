@@ -6,11 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-<<<<<<< HEAD
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GIS_phu_repeat.settings')
-=======
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GIS_phu.settings')
->>>>>>> 7.2 web apply
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -24,3 +20,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
