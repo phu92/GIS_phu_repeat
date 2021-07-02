@@ -8,4 +8,4 @@ from django.shortcuts import render
 
 >>>>>>> 7.2 web apply
 def hello_world(request):
-    return HttpResponse('Hello World!')
+    return render(request, 'base.html')
