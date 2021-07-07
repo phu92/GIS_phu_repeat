@@ -1,0 +1,15 @@
+.testpage_header_logo {
+    margin: 2rem 0;font-family: 'Pacifico', cursive;
+}
+
+.testpage_header_button {
+    margin-bottom: 2rem;
+}
+
+.testpage_footer_logo {
+    margin: 1.5rem 0;font-family: 'Pacifico', cursive;
+}
+
+.testpage_footer_button {
+    margin-top: 1.5rem
+}
