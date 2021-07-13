@@ -3,7 +3,7 @@
 {% block content %}
 
     <div style="margin:2rem; text-align: center">
-        <h1>HTTP METHOD2</h1>
+        <h1>HTTP METHOD</h1>
 
         <form action="/accounts/hello_world/" method="POST">
             {% csrf_token %}
@@ -12,6 +12,9 @@
 
         </form>
 
-        <h3>{{ new_model.text }}</h3>
+        {%  for data in data_list %}
+        <h3>{{ data.text }}</h3>
+        {% endfor %}
+
     </div>
 {% endblock %}
