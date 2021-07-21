@@ -42,39 +42,40 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
 
-class AccountUpdateView(UpdateView):
+class AccountUpdateView(UpdateView): #crete view 참조
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:hello_world')
+    #success_url = reverse_lazy('accountapp:detail') #아직 사용 불가
     template_name = 'accountapp/update.html'
 
-    def get(self,request,*args, **kwargs):
+    def get(self, request, *args, **kwargs):
         if request.user.is_authenticated and self.get_object() == request.user:
-            super().get(request, *args, **kwargs)
+            return super().get(request, *args, **kwargs)# get 로직이 들어있다.
         else:
             return HttpResponseForbidden()
 
-    def post(self,request,*args, **kwargs):
+    def post(self, request, *args, **kwargs):
         if request.user.is_authenticated and self.get_object() == request.user:
-            super().post(request, *args, **kwargs)
+            return super().post(request, *args, **kwargs)# post 로직이 들어있다.
         else:
             return HttpResponseForbidden()
 
 class AccountDeleteView(DeleteView):
     model = User
-    context_object_name = 'target_user'
+    context_object_name = 'target_user'#유저 정보에 접근하기 위해
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/delete.html'
 
-    def get(self,request,*args, **kwargs):
+    def get(self, request, *args, **kwargs):
         if request.user.is_authenticated and self.get_object() == request.user:
-            super().get(request, *args, **kwargs)
+            return super().get(request, *args, **kwargs)# get 로직이 들어있다.
         else:
             return HttpResponseForbidden()
 
-    def post(self,request,*args, **kwargs):
+    def post(self, request, *args, **kwargs):
         if request.user.is_authenticated and self.get_object() == request.user:
-            super().post(request, *args, **kwargs)
+            return super().post(request, *args,**kwargs)# post 로직이 들어있다.
         else:
             return HttpResponseForbidden()
