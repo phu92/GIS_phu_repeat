@@ -51,9 +51,11 @@ class AccountUpdateView(UpdateView): #crete view 참조
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world')
     #success_url = reverse_lazy('accountapp:detail') #아직 사용 불가
     template_name = 'accountapp/update.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:detail', kwargs={'pk': self.object.pk})
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
