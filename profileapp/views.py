@@ -11,7 +11,7 @@ from profileapp.forms import ProfileCreationForm
 from profileapp.models import Profile
 
 @method_decorator(login_required, 'get')
-@method_decorator(login_required, 'get')
+@method_decorator(login_required, 'post')
 class ProfileCreateView(CreateView):
     model = Profile
     form_class = ProfileCreationForm
