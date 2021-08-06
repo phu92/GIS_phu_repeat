@@ -3,7 +3,11 @@
         <h1>testpage</h1>
     </div>
     <div class="testpage_header_button">
-        <span>nav1</span>
+        <span>
+            <a href="{% url 'articleapp:list' %}">
+                Articles
+            </a>
+        </span>
         <span>nav2</span>
         {% if not user.is_authenticated %} {# 로그인 아니라면 로그인 사인업 출력 #}
         <span>
