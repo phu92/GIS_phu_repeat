@@ -53,3 +53,12 @@
     width: 65%;
     box-shadow: 0 0 2rem  lightcyan;
 }
+
+.comment_box {
+    text-align: left;
+    border: solid;
+    border-color: rgba(160, 87, 176, 0.69);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+}
