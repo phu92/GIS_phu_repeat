@@ -16,28 +16,10 @@ from accountapp.models import NewModel
 from accountapp.templates.accountapp.decorators import account_ownership_required
 from articleapp.models import Article
 
-
-@login_required#(login_url=reverse_lazy('accountapp:login')) 다른 경로일 경우
-def hello_world(request):
-    if request.method == "POST":
-
-        temp = request.POST.get('input_text')
-
-        new_model = NewModel()
-        new_model.text = temp
-        new_model.save()
-
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
-    else:
-        data_list = NewModel.objects.all()
-        return render(request, 'accountapp/hello_world.html',
-                      context={'data_list': data_list})
-
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'accountapp/create.html'
 
 class AccountDetailView(DetailView, MultipleObjectMixin):
@@ -71,6 +53,6 @@ class AccountUpdateView(UpdateView): #crete view 참조
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'#유저 정보에 접근하기 위해
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('articleapp:list')
     template_name = 'accountapp/delete.html'
 
