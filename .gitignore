@@ -90,3 +90,7 @@ pragmatic.pem
 gis_4ban_gcp.pub
 
 gis_4ban_gcp
+
+Dockerfile
+
+nginx.conf
