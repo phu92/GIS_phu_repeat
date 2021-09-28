@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+
+  nginx:
+    image: nginx:1.19.5
+    ports:
+      - 80:80
+    networks:
+      - gis_4ban_network_gcp
+    volumes:
+      - /home/wevosan/nginx.conf:/etc/nginx/nginx.conf
+      - gis_4ban_static:/data/static/
+      - gis_4ban_media:/data/media/
+
+  django:
+    image: gis-4ban-django:3
+    networks:
+      - gis_4ban_network_gcp
+    volumes:
+      - gis_4ban_static:/home/GIS_phu_repeat/staticfiles/
+      - gis_4ban_media:/home/GIS_phu_repeat/media/
+    secrets:
+      - DJANGO_SECRET_KEY
+
+  mariadb:
+    image: mariadb:10.5
+    networks:
+      - gis_4ban_network_gcp
+    volumes:
+    - gis_mariadb:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: password1234
+      MARIADB_DATABASE: django
+      MARIADB_USER: django
+      MARIADB_PASSWORD: password1234
+
+networks:
+  gis_4ban_network_gcp:
+
+volumes:
+  gis_4ban_static:
+  gis_4ban_media:
+  gis_mariadb:
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
